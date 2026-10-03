@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<%- include('partials/head', { title: 'Iniciar sesión · Lab07' }) %>
+</head>
+<body class="auth-body">
+  <main class="auth-wrapper">
+    <div class="auth-card card">
+      <div class="auth-brand">
+        <span class="material-icons">lock</span>
+        <h5>Bienvenido de vuelta</h5>
+        <p>Inicia sesión para continuar</p>
+      </div>
+
+      <form id="signin-form">
+        <div class="input-field">
+          <input id="email" type="email" required>
+          <label for="email">Correo electrónico</label>
+        </div>
+        <div class="input-field">
+          <input id="password" type="password" required>
+          <label for="password">Contraseña</label>
+        </div>
+
+        <div id="form-error" class="auth-error"></div>
+
+        <button class="btn waves-effect waves-light auth-btn" type="submit">
+          Ingresar <i class="material-icons right">send</i>
+        </button>
+      </form>
+
+      <p class="auth-switch">¿No tienes cuenta? <a href="/signup">Regístrate</a></p>
+    </div>
+  </main>
+
+  <%- include('partials/scripts') %>
+  <script src="/js/signin.js"></script>
+</body>
+</html>

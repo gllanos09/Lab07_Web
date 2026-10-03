@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<%- include('partials/head', { title: 'Dashboard · Lab07' }) %>
+</head>
+<body class="app-body">
+<%- include('partials/navbar') %>
+
+<main class="container app-main">
+  <div class="card app-card welcome-card">
+    <span class="material-icons welcome-icon">waving_hand</span>
+    <h5>Bienvenido, <span id="welcome-name"></span></h5>
+    <p>Aquí están tus datos: <span id="welcome-email"></span></p>
+    <a href="/profile" class="btn waves-effect waves-light">Ver mi perfil completo</a>
+  </div>
+</main>
+
+<%- include('partials/scripts') %>
+<script src="/js/dashboard-user.js"></script>
+</body>
+</html>

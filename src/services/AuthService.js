@@ -1,14 +1,21 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 import userRepository from '../repositories/UserRepository.js';
 import roleRepository from '../repositories/RoleRepository.js';
 
 class AuthService {
 
-    async signUp({ email, password, name, roles = ['user'] }) {
+    async signUp({ email, password, name, lastName, phoneNumber, birthdate, url_profile, address, roles = ['user'] }) {
         const existing = await userRepository.findByEmail(email);
         if (existing) {
             const err = new Error('El email ya se encuentra en uso');
+            err.status = 400;
+            throw err;
+        }
+
+        if (!User.validatePassword(password)) {
+            const err = new Error('La contraseña debe tener mínimo 8 caracteres, 1 mayúscula, 1 dígito y 1 carácter especial (# $ % & * @)');
             err.status = 400;
             throw err;
         }
@@ -25,13 +32,24 @@ class AuthService {
             roleDocs.push(roleDoc._id);
         }
 
-        const user = await userRepository.create({ email, password: hashed, name, roles: roleDocs });
+        const user = await userRepository.create({
+            email,
+            password: hashed,
+            name,
+            lastName,
+            phoneNumber,
+            birthdate,
+            url_profile,
+            address,
+            roles: roleDocs
+        });
 
         return {
-                id: user._id,
-                email: user.email,
-                name: user.name
-            };
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            lastName: user.lastName
+        };
     }
 
     async signIn({ email, password }) {
@@ -49,15 +67,14 @@ class AuthService {
             throw err;
         }
 
-        const token = jwt.sign({ 
-            sub: user._id, 
-            roles: user.roles.map(r => r.name) }, 
-            process.env.JWT_SECRET, 
-            { 
-                expiresIn: process.env.JWT_EXPIRES_IN || '1h' 
+        const token = jwt.sign({
+            sub: user._id,
+            roles: user.roles.map(r => r.name) },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: process.env.JWT_EXPIRES_IN || '1h'
             }
         );
-        // console.log("Verify:", jwt.verify(token, process.env.JWT_SECRET));
 
         return { token };
     }

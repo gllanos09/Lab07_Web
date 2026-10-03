@@ -1,0 +1,127 @@
+:root {
+  --bg-deep: #0b1120;
+  --bg-panel: #111a2e;
+  --accent: #27d9b5;
+  --accent-dark: #159e85;
+  --gold: #f2c572;
+  --text-main: #e7ecf5;
+  --text-muted: #8b96ab;
+  --danger: #ff6b6b;
+}
+
+* { font-family: 'Inter', sans-serif; }
+
+body {
+  background: radial-gradient(circle at top left, #16223f 0%, var(--bg-deep) 60%);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 600; color: var(--text-main); }
+
+/* --- Páginas de autenticación (signin/signup) --- */
+.auth-body { display: flex; }
+.auth-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-panel);
+  border-radius: 18px;
+  padding: 40px 36px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.signup-card { max-width: 560px; }
+.auth-brand { text-align: center; margin-bottom: 24px; }
+.auth-brand .material-icons {
+  font-size: 42px;
+  color: var(--accent);
+  background: rgba(39,217,181,0.12);
+  border-radius: 50%;
+  padding: 14px;
+}
+.auth-brand h5 { margin: 14px 0 4px; }
+.auth-brand p { color: var(--text-muted); margin: 0; }
+
+.auth-body .input-field input { color: var(--text-main); }
+.auth-body .input-field label { color: var(--text-muted); }
+.auth-body .input-field input:focus + label { color: var(--accent) !important; }
+.auth-body .input-field input:focus { border-bottom: 1px solid var(--accent) !important; box-shadow: 0 1px 0 0 var(--accent) !important; }
+
+.auth-btn {
+  width: 100%;
+  background-color: var(--accent) !important;
+  color: #04261f;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.auth-btn:hover { background-color: var(--accent-dark) !important; }
+
+.auth-switch { text-align: center; margin-top: 18px; color: var(--text-muted); }
+.auth-switch a { color: var(--accent); font-weight: 600; }
+
+.auth-error { color: var(--danger); min-height: 20px; font-size: 0.9rem; }
+.auth-success { color: var(--accent); min-height: 20px; font-size: 0.9rem; }
+
+/* --- Shell de la app (navbar + dashboards + perfil) --- */
+.app-nav { background: var(--bg-panel) !important; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.app-nav .brand-logo { color: var(--text-main) !important; font-weight: 700; }
+.app-nav .brand-logo span { color: var(--accent); }
+.app-nav ul li a { color: var(--text-muted) !important; }
+.app-nav ul li a:hover { color: var(--accent) !important; }
+.sidenav { background: var(--bg-panel); }
+.sidenav li a { color: var(--text-main); }
+
+.app-main { padding-top: 40px; padding-bottom: 60px; }
+.section-title { margin-bottom: 20px; }
+
+.app-card {
+  background: var(--bg-panel);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.app-card .input-field input { color: var(--text-main); }
+.app-card .input-field label { color: var(--text-muted); }
+.app-card .input-field input:disabled { color: var(--text-muted); border-bottom-style: dashed; }
+
+.role-chip {
+  background: rgba(242,197,114,0.15);
+  color: var(--gold);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.welcome-card { text-align: center; }
+.welcome-icon { font-size: 48px; color: var(--accent); margin-bottom: 10px; }
+
+table.striped { background: transparent; color: var(--text-main); }
+table.striped > tbody > tr:nth-child(odd) { background-color: rgba(255,255,255,0.03); }
+table thead th { color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+.modal { background: var(--bg-panel); color: var(--text-main); border-radius: 16px; }
+.modal-footer { background: transparent; }
+
+/* --- Páginas de estado (403/404) --- */
+.status-body { display: flex; }
+.status-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+.status-icon { font-size: 72px; color: var(--gold); margin-bottom: 10px; }
+.status-wrapper h3 { font-size: 3rem; margin: 0; }
+.status-wrapper p { color: var(--text-muted); margin-bottom: 24px; }

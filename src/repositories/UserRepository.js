@@ -15,7 +15,11 @@ class UserRepository {
     }
 
     async updatePassword(id, hashedPassword) {
-        return User.findByIdAndUpdate(id, { password: hashedPassword }, { new: true }).exec();
+        return User.findByIdAndUpdate(id, { password: hashedPassword }, { new: true }).populate('roles').exec();
+    }
+
+    async updateProfile(id, data) {
+        return User.findByIdAndUpdate(id, data, { new: true, runValidators: true }).populate('roles').exec();
     }
 
     async getAll() {
@@ -24,4 +28,3 @@ class UserRepository {
 }
 
 export default new UserRepository();
-

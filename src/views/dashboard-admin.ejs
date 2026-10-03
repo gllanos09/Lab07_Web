@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<%- include('partials/head', { title: 'Dashboard Admin · Lab07' }) %>
+</head>
+<body class="app-body">
+<%- include('partials/navbar') %>
+
+<main class="container app-main">
+  <h5 class="section-title">Usuarios registrados</h5>
+
+  <div class="card app-card">
+    <table class="striped responsive-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Roles</th>
+          <th>Registrado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="users-tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<div id="user-modal" class="modal">
+  <div class="modal-content">
+    <h5 id="modal-user-name"></h5>
+    <p><strong>Email:</strong> <span id="modal-user-email"></span></p>
+    <p><strong>Teléfono:</strong> <span id="modal-user-phone"></span></p>
+    <p><strong>Fecha de nacimiento:</strong> <span id="modal-user-birthdate"></span></p>
+    <p><strong>Edad:</strong> <span id="modal-user-age"></span></p>
+    <p><strong>Dirección:</strong> <span id="modal-user-address"></span></p>
+    <p><strong>Roles:</strong> <span id="modal-user-roles"></span></p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">Cerrar</a>
+  </div>
+</div>
+
+<%- include('partials/scripts') %>
+<script src="/js/dashboard-admin.js"></script>
+</body>
+</html>
